@@ -22,7 +22,7 @@ final class ViewController: UITableViewController {
 //            courseDetails.forEach({print($0.name, $0.duration)})
 //        }
         
-        fetchGenericData { (courseDetails: [CourseDetail]) in
+        fetchGenericData(urlString: "https://api.letsbuildthatapp.com/youtube/course_detail?id=1" ) { (courseDetails: [CourseDetail]) in
             courseDetails.forEach({print($0.name, $0.duration)})
         }
     }
@@ -57,8 +57,7 @@ final class ViewController: UITableViewController {
             }.resume()
     }
     
-    fileprivate func fetchGenericData<T: Decodable>(completion: @escaping (T) -> ()) {
-        let urlString = "https://api.letsbuildthatapp.com/youtube/course_detail?id=1"
+    fileprivate func fetchGenericData<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, resp, err) in
             
