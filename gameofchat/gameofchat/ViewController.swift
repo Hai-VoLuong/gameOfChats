@@ -17,6 +17,10 @@ final class ViewController: UITableViewController {
             print(homeFeed.user)
             homeFeed.videos.forEach({print($0)})
         }
+        
+        fetchDetails { (courseDetails) in
+            courseDetails.forEach({print($0.name, $0.duration)})
+        }
     }
     
     fileprivate func fetchHomeFeed(completion: @escaping (HomeFeed) -> ()) {
@@ -30,6 +34,53 @@ final class ViewController: UITableViewController {
             } catch let jsonErr {
                 print("Failed to decode json:", jsonErr)
             }
-        }.resume()
+            }.resume()
     }
+    
+    fileprivate func fetchDetails(completion: @escaping ([CourseDetail]) -> ()) {
+        let urlString = "https://api.letsbuildthatapp.com/youtube/course_detail?id=1"
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with: url!) { (data, resp, err) in
+            
+            guard let data = data else { return }
+            
+            do {
+                let courseDetails = try JSONDecoder().decode([CourseDetail].self, from: data)
+                completion(courseDetails)
+            } catch let jsonErr {
+                print("Failed to decode json:", jsonErr)
+            }
+            }.resume()
+    }
+}
+
+struct CourseDetail: Decodable {
+    let name: String
+    let duration: String
+}
+
+struct HomeFeed: Decodable {
+    let user: User
+    let videos: [Video]
+}
+
+struct User: Decodable {
+    let id: Int
+    let name: String
+    let username: String
+}
+
+struct Video: Decodable {
+    let id: Int
+    let name: String
+    let link: String
+    let imageUrl: String
+    let numberOfViews: Double
+    let channel: Channel
+}
+
+struct Channel: Decodable {
+    let name: String
+    let profileImageUrl: String
+    let numberOfSubscribers: Double
 }
