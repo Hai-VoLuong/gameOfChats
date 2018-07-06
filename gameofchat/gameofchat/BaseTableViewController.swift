@@ -9,6 +9,11 @@
 
 import UIKit
 
+class BaseCell<U>: UITableViewCell {
+    
+    var item: U!
+}
+
 class BaseTableViewController<T: BaseCell<U>, U>: UITableViewController {
     
     let cellId = "cellId"
@@ -33,15 +38,13 @@ class BaseTableViewController<T: BaseCell<U>, U>: UITableViewController {
     
 }
 
-class BaseCell<U>: UITableViewCell {
-    var item: U!
-}
-
+// ===================== TestDogController ===============================
 struct Dog {
     let name: String
 }
 
 class DogCell: BaseCell<Dog> {
+    
     override var item: Dog! {
         didSet {
             textLabel?.text = item.name
@@ -49,19 +52,7 @@ class DogCell: BaseCell<Dog> {
     }
 }
 
-class StringCell: BaseCell<String> {
-    override var item: String! {
-        didSet {
-            textLabel?.text = "\(item)"
-        }
-    }
-}
-
-class DummyController: BaseTableViewController<StringCell, String> {
-    
-}
-
-class SomeListController: BaseTableViewController<DogCell, Dog> {
+class TestDogController: BaseTableViewController<DogCell, Dog> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,5 +60,24 @@ class SomeListController: BaseTableViewController<DogCell, Dog> {
             Dog(name: "Woof Woof"),
             Dog(name: "Ruff Ruff Ruff")
         ]
+    }
+}
+
+// ===================== TestStringController ================================
+
+class StringCell: BaseCell<String> {
+    
+    override var item: String! {
+        didSet {
+            textLabel?.text = item
+        }
+    }
+}
+
+class TestStringController: BaseTableViewController<StringCell, String> {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        items = ["Woof Woof", "Ruff Ruff Ruff"]
     }
 }

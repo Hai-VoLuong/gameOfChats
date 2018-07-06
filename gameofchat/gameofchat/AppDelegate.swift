@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: PeopleController())
+        window?.rootViewController = UINavigationController(rootViewController: SomeListController())
         return true
     }
     
@@ -41,7 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             super.viewDidLoad()
             items = [Person(firstName: "Bill", lastName: "Clinton"),
                      Person(firstName: "Barack", lastName: "Obama"),
-                     Person(firstName: "Donald", lastName: "Trump")]
+                     Person(firstName: "Donald", lastName: "Trump")
+            ]
         }
     }
 }
