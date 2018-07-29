@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042D67E9210DB91400DF8FEF /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D67E8210DB91400DF8FEF /* ViewController2.swift */; };
+		042D67EE210DBB7E00DF8FEF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042D67ED210DBB7E00DF8FEF /* LoginController.swift */; };
 		04577F3320EA94CC0057EA34 /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F3220EA94CC0057EA34 /* GenericTableViewController.swift */; };
 		04577F3520EA95BC0057EA34 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F3420EA95BC0057EA34 /* BaseTableViewController.swift */; };
 		04BFCF51209619C1001388DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFCF50209619C1001388DC /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		042D67E8210DB91400DF8FEF /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		042D67ED210DBB7E00DF8FEF /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		04577F3220EA94CC0057EA34 /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
 		04577F3420EA95BC0057EA34 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		04BFCF4D209619C1001388DC /* gameofchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gameofchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				042D67E8210DB91400DF8FEF /* ViewController2.swift */,
+				042D67ED210DBB7E00DF8FEF /* LoginController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				042D67EE210DBB7E00DF8FEF /* LoginController.swift in Sources */,
 				04BFCF53209619C1001388DC /* ViewController.swift in Sources */,
 				04577F3320EA94CC0057EA34 /* GenericTableViewController.swift in Sources */,
 				04577F3520EA95BC0057EA34 /* BaseTableViewController.swift in Sources */,
