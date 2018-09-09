@@ -33,22 +33,27 @@ final class LoginController: UIViewController {
         return button
     }()
     
+    /// save user into firebase
     @objc private func handleRegister() {
         guard let email = emailTextField.text,let password = passwordTextField.text, let name = nameTextField.text else {
             print("Form is not valid")
             return
         }
+       
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                print(error)
+                 print(error?.localizedDescription ?? "")
                 return
             }
             
+            guard let uid = user?.uid else { return }
+            
             let ref = Database.database().reference(fromURL: "https://gameofchats-341a4.firebaseio.com/")
+            let userReference = ref.child("users").child(uid)
             let values = ["name": name, "email": email]
-            ref.updateChildValues(values) { (error, ref) in
+            userReference.updateChildValues(values) { (error, ref) in
                 if error != nil {
-                    print(error)
+                    print(error?.localizedDescription ?? "")
                     return
                 }
                 print("Saved user succcessfully into firebase db")
