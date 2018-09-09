@@ -33,7 +33,7 @@ final class LoginController: UIViewController {
         return button
     }()
     
-    /// save user into firebase
+    /// save user into firebase web
     @objc private func handleRegister() {
         guard let email = emailTextField.text,let password = passwordTextField.text, let name = nameTextField.text else {
             print("Form is not valid")
